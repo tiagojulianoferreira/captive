@@ -3,6 +3,8 @@ Este código implementa um portal captivo para o pfSense com auticação via usu
 
 > Ele inclui um menu accordion contendo o botão para as Regras de Acesso à Rede
 
+![captive portal image](image.png)
+
 ## Funcionalidades
 
 * Responsividade
