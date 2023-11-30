@@ -23,9 +23,6 @@
             padding: 20px;
             background-color: #394B5F; /* Cor de fundo do contêiner em verde mais escuro */
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            box-sizing: border-box;
-            color: #FFFFFF; /* Cor do texto em branco */
         }
 
         h2 {
@@ -62,8 +59,8 @@
         }
 
         label {
-            font-size: 16px;
-            margin-bottom: 8px;
+            font-size: 14px;
+            margin-bottom: 10px;
             color: #96A7C2; /* Cor do texto em cinza claro */
         }
 
@@ -109,17 +106,30 @@
             background-color: #4CAF50; /* Cor de fundo do botão ACEITA E CONECTAR em verde */
             padding-inline: 20px;
             font-size: 22px;
-            font-weight: bolder;e
+            font-weight: bolder;
 
         }
 
         .accordion {
-            background-color: #2196F3; /* Cor de fundo do botão LER REGRAS DE ACESSO em azul */
+            background-color: #447094; /* Cor de fundo do botão LER REGRAS DE ACESSO em azul */
         }
 
         .panel {
             display: none; /* Por padrão, o painel está oculto */
             background-color: #394B5F; /* Cor de fundo do conteúdo do acordeão em verde mais escuro */
+            font-size: 14px;
+            margin-left: 0%;
+        }
+        .panel ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .panel li {
+            margin-left: 10px; /* Ajuste a margem esquerda conforme necessário */
+            padding: 5px;
+            border-bottom: 1px solid #96A7C2; /* Adicione uma linha de separação entre os itens da lista */
         }
 
         /* Adiciona um pouco mais de espaçamento entre os itens */
@@ -136,15 +146,24 @@
         .help-content {
             display: none;
         }
+        #logo {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 20px; /* Ajuste a margem inferior conforme necessário */
+        }
 
     </style>
 </head>
 <body>
 
 <div id="container">
-    <h2>ACESSO IFSC</h2>
+    <img id="logo" src="images/logotipo.png" alt="Logo IFSC">
+    <!-- <h2>ACESSO IFSC</h2> -->
 
     <form id="accessForm" method="post">
+        
         <label for="auth_user">Nome de Usuário:</label>
         <input type="text" id="auth_user" name="auth_user" oninput="checkUserInput()" placeholder="Usuário">
 
@@ -156,32 +175,28 @@
         <label for="auth_voucher">Voucher:</label>
         <input type="text" id="auth_voucher" name="auth_voucher" placeholder="Insira o Voucher" oninput="checkVoucherInput()">
 
-        <button class="accordion" type="button" onclick="toggleAccordion('rules-content')">
+        <button class="accordion" type="button" onclick="toggleAccordion('rules-content');focusAcceptButton()">
             <span class="icon">📘</span> LER REGRAS DE ACESSO
         </button>
         <div class="panel" id="rules-content">
             <ul>
-                <li>Regra 1</li>
-                <li>Regra 2</li>
-                <li>Regra 1</li>
-                <li>Regra 2</li>
-                <li>Regra 1</li>
-                <li>Regra 2</li>
-                <li>Regra 1</li>
-                <li>Regra 2</li>
-                <li>Regra 1</li>
-                <li>Regra 2</li>
-                <li>Regra 1</li>
-                <li>Regra 2</li>
-                <li>Regra 1</li>
-                <li>Regra 2</li>
-                <li>Regra 1</li>
-                <li>Regra 2</li>
-                <li>Regra 1</li>
-                <li>Regra 2</li>
-                <li>Regra 1</li>
-             
-                
+                <li>Esta rede é exclusiva para visitantes. Solicite seu usuário e senha na recepção ou com o suporte técnico local.
+                </li>
+                <li>Servidores do IFSC devem usar a rede IFSC-ADM com suas credenciais da Intranet. </li>
+                <li>Alunos do IFSC devem usar a rede IFSC-ALUNOS com suas credenciais do Portal do Aluno.</li>
+                <li>O IFSC não presta suporte para configuração de equipamentos pessoais para fazer uso deste serviço;
+                </li>
+                <li>O IFSC não se responsabiliza por qualquer dano causado (software e hardware) nos equipamentos que fazem uso deste serviço;</li>
+                <li>As credenciais de acesso (usuário e senha) são de uso individual e não devem ser compartilhadas com terceiros, sob pena de suspensão ou cancelamento;
+                </li>
+                <li>O usuário não poderá fazer uso deste serviço para violar leis brasileiras, internacionais, de propriedade intelectual e as resoluções do IFSC;
+                </li>
+                <li>O usuário será responsabilizado por qualquer dano causado à rede do IFSC ou se violar leis brasileiras, internacionais, de propriedade intelectual e as resoluções do IFSC;</li>
+                <li>Não é permitido fazer uso de programas e recursos que causem ou tentem causar a indisponibilidade de serviços de rede ou que prejudiquem de alguma forma as atividades de outros usuários;</li>
+                <li>Não é permitido utilizar programas de compartilhamento de arquivos P2P (Peer-to-peer) tais como Kazaa, Bittorrent, Emule, etc. O objetivo desta restrição é otimizar o uso da rede;
+                </li>
+                <li>O IFSC se reserva o direito de monitorar o uso deste serviço e fornecer informações sobre seus usuários para as autoridades brasileiras.</li>
+                <li>Ao clicar no botão, você afirma que leu e aceita para uso da rede do IFSC</li>
                 <!-- Adicione mais itens conforme necessário -->
             </ul>
         </div>
@@ -211,6 +226,13 @@
             panel.style.display = (panel.style.display === "block") ? "none" : "block";
             var accordionBtn = document.querySelector('.accordion');
             accordionBtn.classList.toggle('active');
+        }
+        function focusAcceptButton() {
+            var panel = document.getElementById('rules-content');
+            if (panel.style.display === 'block') {
+                var acceptButton = document.querySelector('.accept-connect-btn');
+                acceptButton.focus();
+            }
         }
     
         function checkUserInput() {

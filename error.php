@@ -164,6 +164,12 @@
         .scroll-down-icon:hover {
             color: #4CAF50; /* Cor ao passar o mouse */
         }
+        .error-label {
+            font-size: 16px;
+            color: #FFA500; /* Cor do texto em vermelho para indicar um erro */
+            margin-bottom: 10px;
+            display: block;
+        }
 
     </style>
 </head>
@@ -171,8 +177,8 @@
 
 <div id="container">
     <img id="logo" src="captiveportal-logotipo.png" alt="Logo IFSC">
-    <!-- <h2>ACESSO IFSC</h2> -->
-
+    <label class="error-label">Credenciais Inválidas, tente novamente.</label>
+ 
     <form id="accessForm" method="post" action="$PORTAL_ACTION$" onsubmit="return validateForm()">
         <label for="auth_user">Nome de Usuário:</label>
         <input type="text" id="auth_user" name="auth_user" oninput="checkUserInput()" placeholder="Usuário">
