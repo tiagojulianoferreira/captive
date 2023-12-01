@@ -13,6 +13,5 @@ Este código implementa um portal captivo para o pfSense com auticação via usu
 
 ## Melhorias
 
-- Melhorar a exibição do botão Aceitar e Conectar para dar mais ênfase
-- Ajustar o alinhamento e distância dos botões
-- Alterar visual dos inputs para evitar confusão entre Voucher e Usuário/Senha
+- Analisar se a validação dos campos poder ser melhor usando labels HTML, não pop-up
+- Melhorar os scroll das regras pra induzir o usuário ler tudo, hoje podem não notar o botão Aceitar e Conectar
